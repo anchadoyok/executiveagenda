@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // DEV MODE: siapapun yang tahu projectId bisa baca/tulis.
+    // Sebelum publik, ganti dengan rules berbasis auth / document whitelist.
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

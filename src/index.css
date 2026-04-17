@@ -679,9 +679,11 @@ p {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 20px;
+  overflow-y: auto;
   background: rgba(7, 17, 31, 0.58);
   backdrop-filter: blur(10px);
   z-index: 40;
@@ -689,7 +691,10 @@ p {
 
 .modal-card {
   width: min(100%, 620px);
-  display: grid;
+  max-height: calc(100vh - 40px);
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
   padding: 20px;
   border-radius: 22px;
@@ -707,11 +712,16 @@ p {
   justify-content: space-between;
   gap: 20px;
   align-items: flex-start;
+  flex: 0 0 auto;
 }
 
 .modal-body {
   display: grid;
   gap: 18px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-footer {
@@ -886,6 +896,25 @@ p {
   .workspace-header h1 {
     max-width: none;
     white-space: normal;
+  }
+
+  .inline-grid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 820px) {
+  .inline-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-import {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
